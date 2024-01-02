@@ -1,0 +1,82 @@
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Encryption/Decryption</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Symmentric.css') }}">
+    <style>
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <form action="/home" method="post">
+            <input type="submit" value="HOME_PAGE">
+        </form>
+
+        <h1> Symmentric Attribute  Encryption/Decryption</h1>
+        <h3> In Symmentric  we use only single key for Encryption/ Decryption   so the frist step is to generate a secret key<h3>
+        
+            <form action="/generate_key_S" method="post">
+                <input type="submit" value="Generate Symmentric_key">
+            </form>
+            <div class="output">
+                <strong>generated key:</strong>
+                <pre>{{ output }}</pre>
+            </div>
+
+
+
+            <h3>SELECT THE USER FROM THE DATABASE AND PERFORM ENCRYPTION/DECRYPTION ON HIS ATTRIBUTE. :</h3>
+
+        <form action='/encrypt_decrypt_S' method="post">
+
+            <select name="user">
+                <option user_value="">Choose the User </option>
+                {% for user in user_names %}
+                    <option user_value="{{ user }}">{{ user }}</option>
+                {% endfor %}
+            </select>
+
+            <h3>Select the Attribute :</h>
+                <br><br>
+                <select name="Attribute">
+                    <option column_value="">Choose the Attribute </option>
+                    {% for  column in column_names %}
+                        <option column_value="{{ column }}">{{ column }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+
+            <label for="action">Select Action:</label>
+            <br><br>
+            <select name="action" id="action" >
+                <option value="Encrypt">Encrypt</option>
+                <option value="Decrypt">Decrypt</option>
+            </select>
+            <br></br>
+            <input type="text" name="key" id="key" placeholder="Enter Key">
+            <input type="submit" value="Click to Execute ">
+        </form>
+
+        <div class="output">
+            <strong>Output:</strong>
+            <pre><h2>{{output_text}}</h2></pre>
+        </div>
+    </div>
+
+    </div>
+         
+</body>
+</html>

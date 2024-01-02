@@ -1,0 +1,23 @@
+# Use the official Python 3.9 image as the base image
+FROM python:3.8.10
+
+
+# Set the working directory to /system_security_project
+WORKDIR /system_security_project
+
+COPY ./requirements.txt  /system_security_project
+
+
+# Install the required Python packages from requirements.txt
+
+RUN apt-get update && \
+    apt-get install -y gcc && \
+    pip install -r  requirements.txt
+
+
+# Copy the contents of the current directory to the /sys directory in the image
+COPY . /system_security_project
+
+
+# Specify the command to run your application
+CMD python app.py

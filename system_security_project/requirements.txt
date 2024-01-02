@@ -1,0 +1,11 @@
+cryptography==3.4.6
+flask==2.3.3
+rsa==4.7.2
+mysql.connector
+db_connect
+mysql.connector
+
+
+
+
+
